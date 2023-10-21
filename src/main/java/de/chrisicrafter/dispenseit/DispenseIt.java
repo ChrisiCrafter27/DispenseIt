@@ -32,7 +32,7 @@ public class DispenseIt {
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
-        LOGGER.info("COMMON SETUP START");
+        LOGGER.info("COMMON SETUP");
 
         //Register block-place dispenser-behaviour
         for(Block block : ForgeRegistries.BLOCKS.getValues()) {
@@ -141,7 +141,5 @@ public class DispenseIt {
                 return super.execute(blockSource, itemStack);
             }
         });
-
-        LOGGER.info("COMMON SETUP END");
     }
 }
