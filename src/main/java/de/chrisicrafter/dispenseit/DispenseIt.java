@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fluids.DispenseFluidContainer;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -54,6 +55,7 @@ public class DispenseIt {
                         }
                         if (world.getBlockState(pos).isAir()) {
                             world.setBlock(pos, block.defaultBlockState(), 3);
+                            block.setPlacedBy(world, pos, block.defaultBlockState(), null, itemStack);
                             itemStack.split(1);
                             return itemStack;
                         }
@@ -138,7 +140,7 @@ public class DispenseIt {
                     itemStack.split(1);
                     return itemStack;
                 }
-                return super.execute(blockSource, itemStack);
+                return DispenseFluidContainer.getInstance().execute(blockSource, itemStack);
             }
         });
     }
